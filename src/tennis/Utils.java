@@ -30,6 +30,7 @@ public class Utils {
     }
 
     public static boolean isTiebreaker(Map<String, Integer> setScore) {
-        return setScore.values().stream().mapToInt(Number::intValue).sum() == 12;
+        return setScore.containsValue(6)
+                && setScore.values().stream().mapToInt(Number::intValue).sum() == 12;
     }
 }
