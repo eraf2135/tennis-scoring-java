@@ -8,7 +8,7 @@ public class Match {
     //I could make a player object, game object etc but seems overkill
     private Map<String, Integer> gamePointScore = new HashMap<>();
     private Map<String, Integer> setScore = new HashMap<>(); //set as in tennis set, not the operation set :)
-    private final ArrayList<String> players = new ArrayList<>();
+    private ArrayList<String> players = new ArrayList<>();
 
     public Match(String playerOne, String playerTwo) {
         players.add(playerOne);
