@@ -19,18 +19,13 @@ public class Utils {
         return points_to_clockface.get(integer);
     }
 
-    public static String getOpponent(ArrayList<String> players, String player) {
-        return players.stream().filter(x -> !x.equals(player)).findFirst().get();
+    public static boolean isSetFinished(int a, int b) {
+        int sum = a + b;
+        return a == 7 || b == 7  //then it's 7-6 or 7-5
+                || ((a == 6 || b == 6) && sum < 11); //if someone is on 6 and it's less than 6-5
     }
 
-    public static boolean isSetFinished(Map<String, Integer> setScore) {
-        int sum = setScore.values().stream().mapToInt(Number::intValue).sum();
-        return setScore.containsValue(7) //then it's 7-6 or 7-5
-                || (setScore.containsValue(6) && sum < 11); //if someone is on 6 and it's less than 6-5
-    }
-
-    public static boolean isTiebreaker(Map<String, Integer> setScore) {
-        return setScore.containsValue(6)
-                && setScore.values().stream().mapToInt(Number::intValue).sum() == 12;
+    public static boolean isTiebreaker(int a, int b) {
+        return a == 6 &&  b == 6;
     }
 }
