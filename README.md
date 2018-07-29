@@ -30,3 +30,18 @@ i.e. tiebreak at 6 games all.
   match.score();
  
 ```
+To test
+
+    mvn test
+
+To build jar and install
+
+    mvn install
+    
+To exec the above sample, printing to the console:
+
+    mvn exec:java -Dexec.mainClass="tennis.Match"
+
+or 
+
+    java -jar ./target/tennis-scoring-java-1.0-SNAPSHOT.jar

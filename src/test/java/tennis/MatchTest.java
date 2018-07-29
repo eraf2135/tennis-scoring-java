@@ -1,13 +1,13 @@
 package tennis;
 
-import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class MatchTest {
     @Test
-    public void scoreConversionToFifteenShouldWork() {
+    public void scoreConversionToFifteenTest() {
         Match match = new Match("player 1", "player 2");
         match.pointWonBy("player 1");
         assertEquals("0-0, 15-0", match.score());
@@ -16,7 +16,7 @@ public class MatchTest {
     }
 
     @Test
-    public void scoreConversionTo30ShouldWork() {
+    public void scoreConversionTo30Test() {
         Match match = new Match("player 1", "player 2");
         for (int i = 0; i < 2; i++) {
             match.pointWonBy("player 1");
@@ -29,7 +29,7 @@ public class MatchTest {
     }
 
     @Test
-    public void scoreConversionTo40ShouldWork() {
+    public void scoreConversionTo40Test() {
         Match match = new Match("player 1", "player 2");
         for (int i = 0; i < 3; i++) {
             match.pointWonBy("player 1");
@@ -43,7 +43,7 @@ public class MatchTest {
     }
 
     @Test
-    public void scoreConversionToDeuceShouldWork() {
+    public void scoreConversionToDeuceTest() {
         Match match = new Match("player 1", "player 2");
         for (int i = 0; i < 3; i++) {
             match.pointWonBy("player 1");
@@ -53,7 +53,7 @@ public class MatchTest {
     }
 
     @Test
-    public void scoreConversionToAdvantagesShouldWork() {
+    public void scoreConversionToAdvantagesTest() {
         Match match = new Match("player 1", "player 2");
         for (int i = 0; i < 3; i++) {
             match.pointWonBy("player 1");
@@ -67,7 +67,7 @@ public class MatchTest {
     }
 
     @Test
-    public void gameScoreUpdates() {
+    public void gameScoreUpdatesTest() {
         Match match = new Match("player 1", "player 2");
         for (int i = 0; i < 4; i++) {
             match.pointWonBy("player 1");
@@ -76,7 +76,7 @@ public class MatchTest {
     }
 
     @Test
-    public void gameScoreUpdatesForAdvantageGame() {
+    public void gameScoreUpdatesForAdvantageGameTest() {
         Match match = new Match("player 1", "player 2");
         for (int i = 0; i < 3; i++) {
             match.pointWonBy("player 1");
@@ -87,8 +87,8 @@ public class MatchTest {
         assertEquals("1-0, 0-0", match.score());
     }
 
-    @Test
-    public void matchFinishedWhenReach6AndWinBy2() {
+    @Test(expected = UnsupportedOperationException.class)
+    public void matchFinishedWhenReach6AndWinBy2Test() {
         Match match = new Match("player 1", "player 2");
         for (int i = 0; i < 16; i++) {
             match.pointWonBy("player 1");
@@ -97,11 +97,11 @@ public class MatchTest {
             match.pointWonBy("player 2");
         }
         assertEquals("4-6, 0-0", match.score());
-        assertThrows(UnsupportedOperationException.class, ()->match.pointWonBy("player 2"));
+        match.pointWonBy("player 2");
     }
 
     @Test
-    public void tiebreakStartsAt6All() {
+    public void tiebreakStartsAt6AllTest() {
         Match match = new Match("player 1", "player 2");
         for (int i = 0; i < 20; i++) {
             match.pointWonBy("player 1");
@@ -116,7 +116,7 @@ public class MatchTest {
     }
 
     @Test
-    public void tiebreakFinishesAt7AndWinBy2() {
+    public void tiebreakFinishesAt7AndWinBy2Test() {
         Match match = new Match("player 1", "player 2");
         for (int i = 0; i < 20; i++) {
             match.pointWonBy("player 1");
@@ -138,7 +138,7 @@ public class MatchTest {
     }
 
     @Test
-    public void tiebreakContinuesAt6AllWinBy2() {
+    public void tiebreakContinuesAt6AllWinBy2Test() {
         Match match = new Match("player 1", "player 2");
         for (int i = 0; i < 20; i++) {
             match.pointWonBy("player 1");
