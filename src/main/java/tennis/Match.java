@@ -18,7 +18,7 @@ public class Match {
     }
 
     public void pointWonBy(String playerName) {
-        if (isSetFinished(players.get(0).getGames(), players.get(1).getGames())) {
+        if (isSetFinished(players)) {
             throw new UnsupportedOperationException("You've already finished the match! It was " + score());
         }
 
@@ -29,7 +29,7 @@ public class Match {
         int newScore = pointWinningPlayer.getPoints();
         int aheadBy = newScore - opponent.getPoints();
 
-        if (isTiebreaker(pointWinningPlayer.getGames(), opponent.getGames())) {
+        if (isTiebreaker(players)) {
             if (newScore >= 7 && aheadBy >= 2) {
                 gameWonBy(pointWinningPlayer);
             }
@@ -58,7 +58,7 @@ public class Match {
         int p1Points = p1.getPoints();
         int p2Points = p2.getPoints();
 
-        if (isTiebreaker(p1.getGames(), p2.getGames())) {
+        if (isTiebreaker(players)) {
             return p1Points + "-" + p2Points;
         }
 

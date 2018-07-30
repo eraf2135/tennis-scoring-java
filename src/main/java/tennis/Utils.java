@@ -1,5 +1,6 @@
 package tennis;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,13 +19,15 @@ public class Utils {
         return points_to_clockface.get(integer);
     }
 
-    public static boolean isSetFinished(int a, int b) {
-        int sum = a + b;
+    public static boolean isSetFinished(ArrayList<Player> players) {
+        int a = players.get(0).getGames();
+        int b = players.get(1).getGames();
         return a == 7 || b == 7  //then it's 7-6 or 7-5
-                || ((a == 6 || b == 6) && sum < 11); //if someone is on 6 and it's less than 6-5
+                || ((a == 6 || b == 6) && (a + b) < 11); //if someone is on 6 and it's less than 6-5
     }
 
-    public static boolean isTiebreaker(int a, int b) {
-        return a == 6 &&  b == 6;
+    public static boolean isTiebreaker(ArrayList<Player> players) {
+        return players.get(0).getGames() == 6
+                && players.get(1).getGames() == 6;
     }
 }
